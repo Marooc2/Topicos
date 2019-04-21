@@ -19,7 +19,6 @@ public class LecturaArchivo {
 
     public static void main(String[] args) throws IOException {
         muestraContenido("archivo.txt");
-
     }
 
 }
