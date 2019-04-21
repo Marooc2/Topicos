@@ -1,8 +1,8 @@
 public class ConteoSimple {
 
     public static void main(String[] args) {
-        int variable;
-        int valor;
+        int variable = 0;
+        int valor = 1;
 
         int[][] ds = {
             {1,2},
@@ -11,7 +11,7 @@ public class ConteoSimple {
             {0,0}
         };
 
-        funcion_conteo(0,1,ds);
+        funcion_conteo(variable,valor,ds);
 
     }
 
