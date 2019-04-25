@@ -9,15 +9,15 @@ public class Topicos {
     public static void main(String[] args) throws FileNotFoundException {
 
         int[][] dataset = read();
-        double instancias = NumInstancias(dataset);
+        //double instancias = NumInstancias(dataset);
         int[] variable = {0,1};
         int[] valor = {0,0};
         System.out.println("Probabilidad Marginal: " +
-                ProbabilidadMarginal(variable[0],valor[0],instancias,dataset));
+                ProbabilidadMarginal(variable[0],valor[0],dataset));
         System.out.println("Probabilidad Conjunta: " +
-                ProbabilidadConjunta(variable,valor,instancias,dataset));
+                ProbabilidadConjunta(variable,valor,dataset));
         System.out.println("Probabilidad Condicional: " +
-                ProbabilidadCondicionada(variable,valor,instancias,dataset));
+                ProbabilidadCondicionada(variable,valor,dataset));
     }
 
     public static int[][] read() throws FileNotFoundException{
@@ -46,15 +46,15 @@ public class Topicos {
         return dataset;
     }
 
-    public static double NumInstancias(int [][] dataset){
+    /*public static double NumInstancias(int [][] dataset){
         double instancias = 0.0;
         for (int i=0;i < dataset.length;i++){
             instancias += 1.0;
         }
         return instancias;
-    }
+    }*/
 
-    public static double ProbabilidadMarginal(int var, int val, double instancias, int[][] ds){
+    public static double ProbabilidadMarginal(int var, int val, int[][] ds){
         double contador = 0.0;
         double probMarginal;
 
@@ -62,11 +62,11 @@ public class Topicos {
             if (ds[i][var] == val)
                 contador += 1.0;
         }
-        probMarginal = contador/instancias;
+        probMarginal = contador/ds.length;
         return probMarginal;
     }
 
-    public static double ProbabilidadConjunta(int[] var, int[] val, double instancias, int[][] ds){
+    public static double ProbabilidadConjunta(int[] var, int[] val, int[][] ds){
         double contador = 0.0;
         double probConjunta;
         boolean flag = false;
@@ -84,14 +84,14 @@ public class Topicos {
                 contador+=1.0;
         }
 
-        probConjunta = contador/instancias;
+        probConjunta = contador/ds.length;
         return probConjunta;
     }
 
-    public static double ProbabilidadCondicionada(int var[], int[] val, double instancias, int[][]ds){
-        double PB = ProbabilidadMarginal(var[1],val[1],instancias,ds);
+    public static double ProbabilidadCondicionada(int var[], int[] val, int[][]ds){
+        double PB = ProbabilidadMarginal(var[1],val[1],ds);
         //System.out.println(PB);
-        double PAB = ProbabilidadConjunta(var,val,instancias,ds);
+        double PAB = ProbabilidadConjunta(var,val,ds);
         //System.out.println(PAB);
         double probCondionada = PAB/PB;
         return probCondionada;
