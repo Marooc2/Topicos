@@ -10,22 +10,22 @@ import java.util.Scanner;
 
 //Guardar cabeceras de los datasets
 
-public class Topicos_modificado {
+public class Topicos_TP {
     public static void main(String[] args) throws FileNotFoundException {
         //INPUT
         //Matriz de adyacencia de g
-        int[][] g = {   {0,1,0},
-                        {0,0,1},
-                        {1,0,0}};
+        int[][] g = {   {0,0,1},
+                        {0,0,0},
+                        {0,0,0}};
 
         //Cardinalidad de las variables de izquierda a derecha
-        int[] card={3,4,2};
+        int[] card={2,3,2};
 
         //Alpha
         int alpha = 2;
 
         //Lectura del dataset
-        int[][] dataset = ReadDs("archivo.txt");
+        int[][] dataset = ReadDs("data_example.txt");
 
         //Variables
         int columnas = ContarColumnas(dataset);
@@ -89,9 +89,9 @@ public class Topicos_modificado {
         return uniques.size();
 
     }
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     public static int[][] ReadDs(String ds) throws FileNotFoundException{
 
         ArrayList<int[]> listDataset = new ArrayList<int[]>();
@@ -191,12 +191,11 @@ public class Topicos_modificado {
         }
         // Imprimir
         for (int k=0;k<Distribucion.length;k++){
-            System.out.print("Valor de las variables: ");
+            System.out.print("Valores de las variables: ");
             for (int l=0; l<vals[k].length; l++){
                 System.out.print(vals[k][l]);
             }
             System.out.println();
-            //System.out.println("Valor de las variables ");
             System.out.print(Distribucion[k]);
             System.out.println();
         }
@@ -265,7 +264,7 @@ public class Topicos_modificado {
                 int cardAnterior = 1;
                 int tamfactor = 1;
 
-                //  Halla el tamaño del factor
+                //  Halla el tamaÃ±o del factor
                 for(int p = 0;p<listDis.get(i).size();p++){
                     tamfactor *= card[listDis.get(i).get(p)];
                 }
